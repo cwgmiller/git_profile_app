@@ -1,3 +1,6 @@
 #ignore bower_components and node_modules
 /bower_components
 /node_modules
+
+#ignore access_token
+/js/gprofilet.js
