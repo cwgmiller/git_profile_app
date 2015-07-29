@@ -2,9 +2,11 @@ body {
   padding-top: 70px;
 }
 
-
-
 .form-control {
-  width: 50%;
+  width: 250px;
+}
 
+.user-image {
+  border: 1px black solid;
+  border-radius: 3px;
 }
