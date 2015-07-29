@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="public/stylesheets/application.css">
+    <link href='http://fonts.googleapis.com/css?family=Work+Sans' rel='stylesheet' type='text/css'>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -16,7 +17,7 @@
   </head>
 
   <body ng-controller="GitUserSearchController as searchCtrl">
-    <div>
+
       <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
           <form class="navbar-form navbar-left" role="search">
@@ -27,20 +28,36 @@
           </form>
         </div>
       </nav>
-      <ul class="list-group" ng-repeat="user in searchCtrl.searchResult">
-        <li class="list-group-item">
-          <img ng-src="{{user.avatar_url}}" class="user-image" width="100" height="100"><br>
-          <div class="user-details"
-            <i class="fa fa-github fa-fw"></i><a ng-href="{{user.html_url}}">{{user.login}}</a>
-            <br>
-            <i class="fa fa-user fa-fw"></i><strong>Name: </strong>{{user.name}}<br>
-            <i class="fa fa-globe fa-fw"></i><strong>Location: </strong>{{user.location}}<br>
-            <i class="fa fa-archive fa-fw"></i><strong>Public Repositories: </strong>{{user.public_repos}}<br>
-            <i class="fa fa-group fa-fw"></i><strong>Followers: </strong>{{user.followers}}<br>
-            <i class="fa fa-question-circle fa-fw"></i><strong>Hireable: </strong>{{user.hireable}}
+      <div class"container-fluid">
+        <div class="row">
+          <div class="col-xs-12 col-md-6">
+            <ul class="list-group" ng-repeat="user in searchCtrl.searchResult">
+              <li class="list-group-item github-details">
+                  <ul class="list-group user-facts">
+                    <li class="list-group-item user-summary">
+                      <img ng-src="{{user.avatar_url}}" class="user-image" width="100" height="100">
+                        <div class="user-details">
+                          <i class="fa fa-github fa-fw"></i><a ng-href="{{user.html_url}}">{{user.login}}</a><br>
+                          <i class="fa fa-user fa-fw"></i><strong>Name: </strong>{{user.name}}<br>
+                          <i class="fa fa-globe fa-fw"></i><strong>Location: </strong>{{user.location}}<br>
+                          <i class="fa fa-question-circle fa-fw"></i><strong>Hireable: </strong>{{user.hireable}}
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                      <span class="badge">{{user.public_repos}}</span>
+                      <i class="fa fa-archive fa-fw"></i><strong>Public Repositories: </strong>
+                    </li>
+
+                    <li class="list-group-item">
+                      <span class="badge">{{user.followers}}</span>
+                      <i class="fa fa-group fa-fw"></i><strong>Followers: </strong>
+                    </li>
+                  </ul>
+              </li>
+            </ul>
+          </div>
         </div>
-        </li>
-      </ul>
-    </div>
+      </div>
   </body>
 </html>

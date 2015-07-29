@@ -1,5 +1,7 @@
-body {
-  padding-top: 70px;
+body, .github-details {
+  padding-top: 40px;
+  background-color: #d2d2d2;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .form-control {
@@ -9,4 +11,17 @@ body {
 .user-image {
   border: 1px black solid;
   border-radius: 3px;
+  float: right;
+}
+
+.user-summary {
+  padding-bottom: 2em;
+}
+
+.list-group {
+  margin-bottom: 10px;
+}
+
+.navbar {
+  background-color: #323132;
 }
