@@ -2,9 +2,17 @@ githubUserSearch.controller('GitUserSearchController', ['Search', function(Searc
   var self = this;
 
   self.doSearch = function() {
-    Search.query(self.searchTerm)
-      .then(function(response) {
-        self.searchResult = response.data;
-      });
+    if (self.searchTerm) {
+      self.searchResult = [];
+      Search.query(self.searchTerm)
+        .then(function(response) {
+          response.data.items.forEach(function(user){
+            Search.query2(user.login)
+              .then(function(details){
+                self.searchResult.push(details.data);
+              });
+          });
+        });
+    };
   };
 }]);

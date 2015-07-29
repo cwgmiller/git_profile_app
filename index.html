@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Github user search</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -15,14 +16,23 @@
 
   <body ng-controller="GitUserSearchController as searchCtrl">
     <div>
-      <form class="form-horizontal">
-        <input type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }">
-        <button class="btn" ng-click="searchCtrl.doSearch()">Search</button>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input class="form-control" placeholder="search" type="text" ng-model="searchCtrl.searchTerm" ng-change="searchCtrl.doSearch()" ng-model-options="{ updateOn: 'default blur', debounce: { 'default': 500, 'blur': 0 } }">
+        </div>
+        <button type="submit" class="btn btn-default" ng-click="searchCtrl.doSearch()"><i class="fa fa-search"></i></button>
       </form>
-      <ul class="list-group" ng-repeat="user in searchCtrl.searchResult.items">
-        <li>
-          <img ng-src="{{user.avatar_url}}&s=50">
-          <a ng-href="{{user.html_url}}">{{user.login}}</a>
+
+      <ul class="list-group" ng-repeat="user in searchCtrl.searchResult">
+        <li class="list-group-item">
+          <img ng-src="{{user.avatar_url}}" width="100" height="100"><br>
+          <i class="fa fa-github fa-fw"></i><a ng-href="{{user.html_url}}">{{user.login}}</a>
+          <br>
+          <i class="fa fa-user fa-fw"></i><strong>Name: </strong>{{user.name}}<br>
+          <i class="fa fa-globe fa-fw"></i><strong>Location: </strong>{{user.location}}<br>
+          <i class="fa fa-archive fa-fw"></i><strong>Public Repositories: </strong>{{user.public_repos}}<br>
+          <i class="fa fa-group fa-fw"></i><strong>Followers: </strong>{{user.followers}}<br>
+          <i class="fa fa-question-circle fa-fw"></i><strong>Hireable: </strong>{{user.hireable}}
         </li>
       </ul>
     </div>

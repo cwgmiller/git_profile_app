@@ -4,7 +4,7 @@ describe('GitUserSearchController', function(){
   var ctrl;
 
   beforeEach(inject(function($controller){
-    ctrl = $controller('GitUserSearchController')
+    ctrl = $controller('GitUserSearchController');
   }));
 
   it('initialises with an empty search result and term', function(){
@@ -46,7 +46,7 @@ describe('GitUserSearchController', function(){
         ctrl.searchTerm = 'hello';
         ctrl.doSearch();
         httpBackend.flush();
-        expect(ctrl.searchResult.items).toEqual(items);
+        expect(ctrl.searchResult).toEqual(items);
       });
   });
 
